@@ -41,8 +41,8 @@ class SecondActivity : AppCompatActivity() {
         val email = intent.getStringExtra(EMAIL)
         val feedback = intent.getStringExtra(FEEDBACK)
 
-        txt1.text = "Thank you " + name + " for your feedback"
-        txt2.text = "An email will be send to " + email + " regarding your feedback"
+        txt1.text = "Thanks " + name + " for feedback"
+        txt2.text =  email + "will be send thank you for feedback"
         txt3.text = feedback
 
 
@@ -61,7 +61,7 @@ class SecondActivity : AppCompatActivity() {
     private fun createNotificationChannel() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val title = "Feedback"
-            val descriptionText = "Your feedback has been submitted successfully"
+            val descriptionText = "Your feedback has been submitted "
             val importance = NotificationManager.IMPORTANCE_DEFAULT
             val channel = NotificationChannel(CHANNEL_ID, title, importance).apply {
                 description = descriptionText
@@ -77,7 +77,7 @@ class SecondActivity : AppCompatActivity() {
         val intent = Intent(this, SecondActivity::class.java).apply {
             flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         }
-        //val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0,intent,0)
+
         val bitmap =
             BitmapFactory.decodeResource(applicationContext.resources, R.drawable.feedback_img)
         val bitmapLargeIcon =
@@ -88,7 +88,7 @@ class SecondActivity : AppCompatActivity() {
         val builder = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_stat_name)
             .setContentTitle("Feedback")
-            .setContentText("Thank you "+name1+",  Your feedback has been submitted successfully")
+            .setContentText(name1+",  Your feedback has been submitted :) ")
             .setLargeIcon(bitmapLargeIcon)
             //.setContentIntent(pendingIntent)
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
